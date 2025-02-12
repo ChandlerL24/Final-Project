@@ -1,9 +1,66 @@
-# Final-Project
-API Application that provides insights into public health trends in different U.S cities using data on diseases, vaccinations, etc…
-API Methods: Disease Statistics: Take a region (e.g., state or city) and return the current statistics for diseases like flu, COVID-19, or other infectious diseases, using public health data sources like the CDC. Vaccination Rates: Return vaccination statistics for a region, breaking down by type of vaccine and age group. Trend Analysis: Given a region and a specific disease, provide historical trends (how cases or deaths have changed over the past months or years). Comparison Tool: Take two or more regions and compare their vaccination rates, disease statistics, or other health metrics. Risk Assessment: Given a region, return the current risk level for disease spread based on data such as infection rates and vaccination coverage.
-Execution Plan:
-Week 4: Access public health APIs (CDC, WHO) or datasets and ensure the data is reliable.
-Week 5: Use backup data sources if needed.
-Week 6: Implement disease statistics and vaccination rate retrieval methods.
-Week 7: Implement trend analysis and comparison tools.
-Week 8: Wrap the code into an API, allowing others to query health data via the API.
+# Public Health Insights API
+
+This API provides insights into public health trends across different U.S. cities, utilizing data on diseases, vaccinations, and more. It offers various methods to access crucial health-related statistics.
+
+## API Methods
+
+### 1. **Disease Statistics**
+   - **Description**: Returns the current statistics for diseases like flu, COVID-19, or other infectious diseases.
+   - **Parameters**: 
+     - `region` (required): Specify a region (e.g., state or city).
+   - **Data Source**: Public health data sources like the CDC.
+   
+### 2. **Vaccination Rates**
+   - **Description**: Provides vaccination statistics for a region, broken down by type of vaccine and age group.
+   - **Parameters**:
+     - `region` (required): Specify a region (e.g., state or city).
+   - **Data Source**: Public health datasets.
+   
+### 3. **Trend Analysis**
+   - **Description**: Given a region and a specific disease, provides historical trends such as how cases or deaths have changed over the past months or years.
+   - **Parameters**:
+     - `region` (required): Specify a region.
+     - `disease` (required): Specify the disease (e.g., flu, COVID-19).
+   - **Data Source**: Public health data sources.
+
+### 4. **Comparison Tool**
+   - **Description**: Compares health metrics like vaccination rates, disease statistics, or other health indicators across multiple regions.
+   - **Parameters**:
+     - `regions` (required): A list of regions to compare.
+     - `metrics` (optional): Specify the metrics for comparison (e.g., vaccination rates, disease statistics).
+   
+### 5. **Risk Assessment**
+   - **Description**: Returns the current risk level for disease spread based on data like infection rates and vaccination coverage for a given region.
+   - **Parameters**:
+     - `region` (required): Specify a region (e.g., state or city).
+   - **Data Source**: Public health data sources.
+
+## Execution Plan
+
+- **Week 4**: 
+   - Access public health APIs (CDC, WHO) or datasets.
+   - Ensure data reliability and completeness.
+   
+- **Week 5**: 
+   - Use backup data sources if needed to ensure continuity.
+   
+- **Week 6**: 
+   - Implement methods to retrieve disease statistics and vaccination rates.
+   
+- **Week 7**: 
+   - Implement trend analysis and comparison tools to provide meaningful insights.
+   
+- **Week 8**: 
+   - Wrap the code into an API, enabling others to query health data via the API.
+
+---
+
+## Getting Started
+
+To use this API, simply follow the instructions to make a request to the appropriate endpoint for disease statistics, vaccination rates, or other health data for your desired region.
+
+## Contributing
+
+Feel free to submit issues or pull requests. Contributions are welcome to help improve the accuracy and functionality of this API.
+
+
