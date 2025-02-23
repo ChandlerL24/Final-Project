@@ -7,32 +7,32 @@ This API provides insights into public health trends across different U.S. citie
 ### 1. **Disease Statistics**
    - **Description**: Returns the current statistics for diseases like flu, COVID-19, or other infectious diseases.
    - **Parameters**: 
-     - `region` (required): Specify a region (e.g., state or city).
+     - Specify a region (e.g., state or city).
    - **Data Source**: Public health data sources like the CDC.
    
 ### 2. **Vaccination Rates**
    - **Description**: Provides vaccination statistics for a region, broken down by type of vaccine and age group.
    - **Parameters**:
-     - `region` (required): Specify a region (e.g., state or city).
+     - Specify a region (e.g., state or city).
    - **Data Source**: Public health datasets.
    
 ### 3. **Trend Analysis**
    - **Description**: Given a region and a specific disease, provides historical trends such as how cases or deaths have changed over the past months or years.
    - **Parameters**:
-     - `region` (required): Specify a region.
-     - `disease` (required): Specify the disease (e.g., flu, COVID-19).
+     - Specify a region.
+     - Specify the disease (e.g., flu, COVID-19).
    - **Data Source**: Public health data sources.
 
 ### 4. **Comparison Tool**
    - **Description**: Compares health metrics like vaccination rates, disease statistics, or other health indicators across multiple regions.
    - **Parameters**:
-     - `regions` (required): A list of regions to compare.
-     - `metrics` (optional): Specify the metrics for comparison (e.g., vaccination rates, disease statistics).
+     - A list of regions to compare.
+     - Specify the metrics for comparison (e.g., vaccination rates, disease statistics).
    
 ### 5. **Risk Assessment**
    - **Description**: Returns the current risk level for disease spread based on data like infection rates and vaccination coverage for a given region.
    - **Parameters**:
-     - `region` (required): Specify a region (e.g., state or city).
+     - Specify a region (e.g., state or city).
    - **Data Source**: Public health data sources.
 
 ## Execution Plan
@@ -59,8 +59,6 @@ This API provides insights into public health trends across different U.S. citie
 
 To use this API, simply follow the instructions to make a request to the appropriate endpoint for disease statistics, vaccination rates, or other health data for your desired region.
 
-## Contributing
 
-Feel free to submit issues or pull requests. Contributions are welcome to help improve the accuracy and functionality of this API.
 
 
