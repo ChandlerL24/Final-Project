@@ -30,7 +30,7 @@ An HTML table displaying health data, including the following columns:
 #### Example Usage:
 1. **Get health data for the United States for the year 2020:**
     ```bash
-    GET /health_data?country=United%20States&year=2020
+    GET /health_data?country=Italy&year=2020
     ```
 
 2. **Get health data for Japan for the year 2019 without aggregation:**
@@ -84,7 +84,7 @@ An HTML page with two tables, one for each country, displaying health data. Each
     * Install the required packages: `pip install fastapi uvicorn pandas tabulate`
 2.  **Running the API:**
     * Place the `Global Health Statistics.csv` file in the same directory as the Python script.
-    * Run the API using Uvicorn: `uvicorn main:app --reload` (replace `main` with your script's filename if different).
+    * Run the API using Uvicorn: `uvicorn app:app --reload` (replace `app` with your script's filename if different).
 3.  **Accessing the API:**
     * Open your browser or use a tool like `curl` or Postman to access the API endpoints.
     * View the API documentation at `/docs` for interactive exploration.
