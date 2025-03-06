@@ -91,7 +91,8 @@ An HTML page with two tables, one for each country, displaying health data. Each
 
 ## Data Source
 
-* The API uses a CSV file named `Global Health Statistics.csv`. Ensure this file is present in the same directory as your Python script.
+The dataset is hosted externally and can be downloaded from the following link:
+https://www.kaggle.com/datasets/malaiarasugraj/global-health-statistics
 
 ## Notes
 
