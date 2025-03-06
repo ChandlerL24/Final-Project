@@ -1,6 +1,6 @@
 # Public Health Data API
 
-This API provides access to global public health statistics, allowing users to retrieve and compare health data for different countries and years. It utilizes a local CSV file ("Global Health Statistics.csv") as its data source.
+This API provides access to global public health statistics, allowing users to retrieve and compare health data for different countries and years. It utilizes a CSV file ("Global Health Statistics.csv") from Kaggle as its data source.
 
 ## API Methods
 
