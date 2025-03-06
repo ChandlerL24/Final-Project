@@ -1,64 +1,64 @@
-# Public Health Insights API
+# Public Health Data API
 
-This API provides insights into public health trends across different U.S. cities, utilizing data on diseases, vaccinations, and more. It offers various methods to access crucial health-related statistics.
+This API provides access to global public health statistics, allowing users to retrieve and compare health data for different countries and years. It utilizes a local CSV file ("Global Health Statistics.csv") as its data source.
 
 ## API Methods
 
-### 1. **Disease Statistics**
-   - **Description**: Returns the current statistics for diseases like flu, COVID-19, or other infectious diseases.
-   - **Parameters**: 
-     - Specify a region (e.g., state or city).
-   - **Data Source**: Public health data sources like the CDC.
-   
-### 2. **Vaccination Rates**
-   - **Description**: Provides vaccination statistics for a region, broken down by type of vaccine and age group.
-   - **Parameters**:
-     - Specify a region (e.g., state or city).
-   - **Data Source**: Public health datasets.
-   
-### 3. **Trend Analysis**
-   - **Description**: Given a region and a specific disease, provides historical trends such as how cases or deaths have changed over the past months or years.
-   - **Parameters**:
-     - Specify a region.
-     - Specify the disease (e.g., flu, COVID-19).
-   - **Data Source**: Public health data sources.
+1.  **Retrieve Health Data for a Country and Year (`/health_data`)**
 
-### 4. **Comparison Tool**
-   - **Description**: Compares health metrics like vaccination rates, disease statistics, or other health indicators across multiple regions.
-   - **Parameters**:
-     - A list of regions to compare.
-     - Specify the metrics for comparison (e.g., vaccination rates, disease statistics).
-   
-### 5. **Risk Assessment**
-   - **Description**: Returns the current risk level for disease spread based on data like infection rates and vaccination coverage for a given region.
-   - **Parameters**:
-     - Specify a region (e.g., state or city).
-   - **Data Source**: Public health data sources.
+    * **Description:** Returns health data for a specific country and year, presented in an HTML table. Data can be aggregated by disease.
+    * **Parameters:**
+        * `country` (string, required): The name of the country.
+        * `year` (integer, required): The year for which to retrieve data.
+        * `aggregate` (boolean, optional, default: true): If true, aggregates data by disease, showing mean values for numerical columns.
+    * **Data Source:** `Global Health Statistics.csv`
+    * **Response:** An HTML table displaying health data, including "Disease Name," "Prevalence Rate (%)", "Mortality Rate (%)", etc.
+    * **Example Usage:**
+        * `GET /health_data?country=United%20States&year=2020`
+        * `GET /health_data?country=Japan&year=2019&aggregate=false`
 
-## Execution Plan
+2.  **Compare Health Data Between Two Countries (`/health_compare`)**
 
-- **Week 4**: 
-   - Access public health APIs (CDC, WHO) or datasets.
-   - Ensure data reliability and completeness.
-   
-- **Week 5**: 
-   - Use backup data sources if needed to ensure continuity.
-   
-- **Week 6**: 
-   - Implement methods to retrieve disease statistics and vaccination rates.
-   
-- **Week 7**: 
-   - Implement trend analysis and comparison tools to provide meaningful insights.
-   
-- **Week 8**: 
-   - Wrap the code into an API, enabling others to query health data via the API.
-
----
+    * **Description:** Compares health data between two specified countries for a given year, presenting the results in two separate HTML tables. Data can be aggregated by disease.
+    * **Parameters:**
+        * `country1` (string, required): The name of the first country.
+        * `country2` (string, required): The name of the second country.
+        * `year` (integer, required): The year for comparison.
+        * `aggregate` (boolean, optional, default: true): If true, aggregates data by disease, showing mean values for numerical columns.
+    * **Data Source:** `Global Health Statistics.csv`
+    * **Response:** An HTML page with two tables, one for each country, displaying health data.
+    * **Example Usage:**
+        * `GET /health_compare?country1=Canada&country2=Mexico&year=2021`
+        * `GET /health_compare?country1=Germany&country2=France&year=2022&aggregate=false`
 
 ## Getting Started
 
-To use this API, simply follow the instructions to make a request to the appropriate endpoint for disease statistics, vaccination rates, or other health data for your desired region.
+1.  **Installation:**
+    * Ensure you have Python 3.7+ installed.
+    * Install the required packages: `pip install fastapi uvicorn pandas tabulate`
+2.  **Running the API:**
+    * Place your `Global Health Statistics.csv` file in the same directory as the Python script.
+    * Run the API using Uvicorn: `uvicorn main:app --reload` (replace `main` with your script's filename if different).
+3.  **Accessing the API:**
+    * Open your browser or use a tool like `curl` or Postman to access the API endpoints.
+    * View the API documentation at `/docs` for interactive exploration.
 
+## Data Source
 
+* The API uses a local CSV file named `Global Health Statistics.csv`. Ensure this file is present in the same directory as your Python script.
 
+## Notes
 
+* Data is loaded into a Pandas DataFrame upon application startup.
+* The API returns HTML responses, making it easy to view data in a web browser.
+* Error handling is implemented to catch and display issues such as missing data or invalid parameters.
+* The code includes logging for debugging and error tracking.
+
+## Future Improvements
+
+* Implement data validation and sanitization.
+* Add more robust error handling and logging.
+* Consider adding functionality to filter and sort data.
+* Connect to external databases or APIs for real-time data.
+* Add more detailed API documentation with example responses.
+* Implement a more user-friendly frontend.
