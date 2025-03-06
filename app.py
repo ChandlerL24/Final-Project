@@ -111,6 +111,7 @@ async def health_data(
         logger.error(f"Error retrieving health data: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error retrieving health data: {str(e)}")
 
+
 # Endpoint to compare health data between two countries for a given year
 @app.get("/health_compare", response_class=HTMLResponse)
 async def health_compare(
@@ -147,7 +148,7 @@ async def health_compare(
                     country2_rows.append(row[selected_columns])
 
         # Raise an error if no matching data is found
-        if not country1_rows and not country2_rows:
+        if not country1_rows or not country2_rows:
             raise HTTPException(status_code=404, detail="Countries or year not found.")
 
         # Create DataFrames from the matching rows
