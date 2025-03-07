@@ -109,7 +109,7 @@ async def health_data(
     # Handle any exceptions during data retrieval
     except Exception as e:
         logger.error(f"Error retrieving health data: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Error retrieving health data: {str(e)}")
+        raise HTTPException(status_code=404, detail=f"Error retrieving health data: {str(e)}")
 
 
 # Endpoint to compare health data between two countries for a given year
@@ -187,7 +187,11 @@ async def health_compare(
         """
         return html_content
 
-    # Handles any exceptions during data comparison
+    except HTTPException as http_exc:
+        logger.error(f"HTTPException: {str(http_exc)}")
+        raise http_exc
+
+    # Handles any other exceptions during data comparison
     except Exception as e:
         logger.error(f"Error comparing health data: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Error comparing health data: {str(e)}")
+        raise HTTPException(status_code=500, detail="Internal server error occurred while comparing health data.")
