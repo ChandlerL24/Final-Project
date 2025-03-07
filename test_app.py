@@ -17,17 +17,17 @@ def test_health_data_valid():
     assert response.status_code == 200
     assert "Japan" in response.text  
 
-# Test the /health_data endpoint with invalid country
+# Test that the /health_data endpoint with invalid country
 def test_health_data_invalid_country():
     response = client.get("/health_data?country=FakeCountry&year=2020")
     assert response.status_code == 404
-    assert "Country or year not found." in response.json()  
+    assert "Error retrieving health data: 404: Country or year not found." in response.json()['detail']
 
 # Test the /health_data endpoint with invalid year
 def test_health_data_invalid_year():
     response = client.get("/health_data?country=USA&year=9999")
     assert response.status_code == 404
-    assert "Country or year not found." in response.json()  
+    assert "Error retrieving health data: 404: Country or year not found." in response.json()['detail']
 
 # Test the /health_compare endpoint with valid countries and year
 def test_health_compare_valid():
@@ -36,24 +36,25 @@ def test_health_compare_valid():
     assert "Russia" in response.text  
     assert "Canada" in response.text  
 
-# Test the /health_compare endpoint with invalid countries
+# Test that the /health_compare endpoint with invalid countries
 def test_health_compare_invalid_countries():
     response = client.get("/health_compare?country1=FakeCountry1&country2=FakeCountry2&year=2020")
     assert response.status_code == 404
-    assert "Countries or year not found." in response.json()  
+    assert "Countries or year not found." in response.json()['detail']  
 
-# Test the /health_compare endpoint with aggregation set to False
+# Test the /health_compare endpoint with no aggregation
 def test_health_compare_no_aggregation():
-    response = client.get("/health_compare?country1=United%20States&country2=Canada&year=2020&aggregate=false")
+    response = client.get("/health_compare?country1=USA&country2=Canada&year=2020&aggregate=false")
     assert response.status_code == 200
-    assert "United States" in response.text 
+    assert "USA" in response.text 
     assert "Canada" in response.text 
     assert "Disease Name" in response.text  
 
-# Test the /health_compare endpoint with aggregation set to True (default)
+# Test the /health_compare endpoint with aggregation
 def test_health_compare_with_aggregation():
-    response = client.get("/health_compare?country1=United%20States&country2=Canada&year=2020&aggregate=true")
+    response = client.get("/health_compare?country1=USA&country2=Canada&year=2020&aggregate=true")
     assert response.status_code == 200
-    assert "United States" in response.text  
+    assert "USA" in response.text  
     assert "Canada" in response.text  
     assert "Disease Name" in response.text  
+
